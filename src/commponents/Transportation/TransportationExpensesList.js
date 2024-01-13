@@ -3,6 +3,7 @@ import { BiBookAlt } from "react-icons/bi";
 import ApplicationForm from "./ApplicationForm";
 import RecentryApplication from "./RecntryApplication";
 import { useState } from "react";
+import SearchCondition from "./SearchCondtion";
 
 function TransportationExpensesList() {
     const [isApplication, setIsApplication] = useState(true);
@@ -43,6 +44,12 @@ function TransportationExpensesList() {
                     <ApplicationForm />
                     <RecentryApplication />
                 </div>
+            }
+            {!isApplication &&
+            <div className={`  animate-fadeIn`}>
+            <SearchCondition />
+            </div>
+
             }
         </div>
     );

@@ -1,6 +1,6 @@
 import InputUI from "../UI/Input";
 import SelectUI from "../UI/Select";
-function ApplicationForm() {
+function SearchCondition() {
 
     const handleSubmit = function (event) {
         event.preventDefault();
@@ -12,21 +12,25 @@ function ApplicationForm() {
         <div className=" p-2 ">
             <form
                 onSubmit={handleSubmit}
-                className=" pt-2 bg-green-200 pb-2 ">
+                className=" pt-2 bg-orange-200 pb-2 ">
 
                 <div className="grid gap-6 mb-6 md:grid-cols-2 p-2">
-                    <InputUI type="text" name="origin" displayName="出発地" labelClassName={labelClassName} inputClassName={inputClassName} required />
-                    <InputUI type="text" name="destination" displayName="目的地" labelClassName={labelClassName} inputClassName={inputClassName} required />
-                    <InputUI type="text" name="transportation-name" displayName="交通機関名" labelClassName={labelClassName} inputClassName={inputClassName} required />
-                    <InputUI type="number" name="expense" displayName="費用" labelClassName={labelClassName} inputClassName={inputClassName} required />
-                    <SelectUI name="one-way" displayName="片道/往復" inputClassName={inputClassName} labelClassName={labelClassName} required
+                    <InputUI type="date" name="start-date" displayName="開始日" labelClassName={labelClassName} inputClassName={inputClassName} />
+                    <InputUI type="date" name="end-date" displayName="終了日" labelClassName={labelClassName} inputClassName={inputClassName} />
+                    <SelectUI name="one-way" displayName="検索項目" inputClassName={inputClassName} labelClassName={labelClassName} required
                         options={
                             [
-                                { val: 1, name: "片道" },
-                                { val: 0, name: "往復" },
+                                { val: 1, name: "利用日" },
+                                { val: 0, name: "申請日" },
                             ]
                         } />
-                    <InputUI type="date" name="departure-date" displayName="利用日" labelClassName={labelClassName} inputClassName={inputClassName} required />
+                    <SelectUI name="one-way" displayName="順序" inputClassName={inputClassName} labelClassName={labelClassName} required
+                        options={
+                            [
+                                { val: "ASC", name: "ASC" },
+                                { val: "DESC", name: "DESC" },
+                            ]
+                        } />
                 </div>
                 <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
@@ -35,4 +39,4 @@ function ApplicationForm() {
     )
 }
 
-export default ApplicationForm;
+export default SearchCondition;
