@@ -25,10 +25,7 @@ function HomePage() {
                                 直近の貴方の交通費を申請しましょう。
                             </p>
                             <NavLink to="transportation" className="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Go to the page
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
+                                
                             </NavLink>
                         </div>
                     </div>
@@ -48,10 +45,7 @@ function HomePage() {
                                 Web画面で経費を手早く申請してしまいましょう。
                             </p>
                             <NavLink to="/expenses" className="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Go to the page
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
+                                
                             </NavLink>
                         </div>
                     </div>
@@ -71,10 +65,7 @@ function HomePage() {
                                 貴方のユーザ情報を確認することができます。
                             </p>
                             <NavLink to="/userinfo" className="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Go to the page
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
+                               
                             </NavLink>
                         </div>
                     </div>

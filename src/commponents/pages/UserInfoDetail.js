@@ -1,32 +1,20 @@
-import {useEffect, useState} from 'react'
-
-const UserInfoDetail = ({keycloak}) => {
-    const [user, setUser] = useState({name: "", email: "", id: "", isAdmin: false});
-
-    async function load() {
-
-        try {
-            //loadUserInfoから取得したユーザーデータを元にuserを更新
-            const res = await keycloak;
-            console.log(keycloak.token);
-            const isAdmin = (res.hasRealmRole("ADMIN"));
-            await res.loadUserInfo().then(UserInfo => {
-                setUser({name: UserInfo.name, email: UserInfo.email, id: UserInfo.sub, isAdmin: isAdmin})
-            }).catch((e) => {
-                window.location.reload();
-            })
-        } catch (e) {
-            console.log(e);
-            if(e !== undefined  && e !== null){
-                window.location.reload();
-            }
-
-        }
-    }
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+const UserInfoDetail = () => {
+    const [user, setUser] = useState({ name: "", email: "", id: "", isAdmin: false });
+    const keycloak = useSelector((state) => state.keycloak);
 
     useEffect(() => {
+        async function load() {
+            //loadUserInfoから取得したユーザーデータを元にuserを更新
+            const UserInfo = await keycloak.userInfo;
+            const isAdmin = keycloak.isAdmin;
+            if(UserInfo){
+                setUser({ name: UserInfo.name, email: UserInfo.email, id: UserInfo.sub, isAdmin })
+            } 
+        }
         load();
-    }, []);
+    }, [keycloak]);
 
     return (
         <div className=" bg-blue-100 overflow-hidden shadow rounded-lg border border-black">

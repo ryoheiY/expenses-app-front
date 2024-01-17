@@ -1,24 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
 import InputUI from "../UI/Input";
 import SelectUI from "../UI/Select";
-
-function ApplicationForm({keycloak}) {
-
+import { Form, json, useNavigate, useNavigation } from "react-router-dom";
+import { keycloakActions } from "../store/store";
+function ApplicationForm({keycloak, ErrorHandle}) {
+    const keycloakState = useSelector((state) => state.keycloak);
+    const dispatch = useDispatch();
+    const navigate  = useNavigate();
     const handleSubmit = function (event) {
         event.preventDefault();
-        console.log("submit");
+        // console.log("submit");
         
-        const form = document.getElementById("form");
-        console.log(form);
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data);
-        saveExpense(data, keycloak);
+        // const form = document.getElementById("form");
+        // console.log(form);
+        // const formData = new FormData(form);
+        // const data = Object.fromEntries(formData.entries());
+        // console.log(data);
+        // saveExpense(data, keycloak, ErrorHandle);
+        dispatch(keycloakActions.test());
+        const json = {message:"Error", status:500}
+        navigate("error/" + "?json=" + JSON.stringify(json));
     }
     const labelClassName = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
     const inputClassName = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
-    return (
-        <div className=" p-2 ">
-            <form id="form"
+    return  <div className=" p-2 animate-fadeIn">
+            <form id="form" 
                 onSubmit={handleSubmit}
                 className=" pt-2 bg-green-200 pb-2 ">
 
@@ -48,19 +54,29 @@ function ApplicationForm({keycloak}) {
 
             </form>
         </div>
-    )
+    
 }
 
-async function saveExpense(data, keycloak){
-    const token = await keycloak.token;
-    const res = await fetch("http://localhost:8080/transportation/expense", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            'Authorization': `Bearer ${token}`
-          },
-        body: JSON.stringify(data),
-    });
+async function saveExpense(data, keycloak, ErrorHandle){
+    // const token = await keycloak.token;
+    // const res = await fetch("http://localhost:8080/transportation/expense", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         'Authorization': `Bearer ${token}`
+    //       },
+    //       mode: 'cors',
+    //     body: JSON.stringify(data),
+    // });
+    // console.log(res);
+    // console.log(await res.text());
+    // ErrorHandle();
+
+
+}
+
+export async function action(){
+    throw new json({menubar:"aw"},{status:500});
 }
 
 export default ApplicationForm;

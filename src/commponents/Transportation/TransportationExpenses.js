@@ -6,7 +6,8 @@ import { useState } from "react";
 import SearchCondition from "./SearchCondtion";
 import TabsUI from "../UI/Tabs";
 import SearchResult from "./SearchResult";
-import { keycloakContext } from "../../App";
+import { json } from "react-router-dom";
+
 /**
  * Tabに表示する項目の一覧
  */
@@ -22,6 +23,15 @@ const TAB_ARRAY = [
 function TransportationExpensesList() {
     const [propName, setPropName] = useState(TAB_ARRAY[0].name);
 
+    function ErrorHandle() {
+        console.log("washissu");
+        throw new json({
+            sorry: "You have been fired.",
+            hrEmail: "hr@bigco.com",
+        },
+            { status: 401 });
+    }
+
     return (
         <div className=" animate-fadeIn p-2">
             {/** Tab */}
@@ -34,14 +44,7 @@ function TransportationExpensesList() {
                 {/** application form */}
                 {propName === TAB_ARRAY[0].name &&
                     <div className={`  animate-fadeIn`}>
-                        <keycloakContext.Consumer>
-                            {(value) => {
-                                const { keycloakState } = value;
-                                return (<><ApplicationForm keycloak={keycloakState.keycloak} /><RecentlyApplication /></>)
-                            }}
-                            
-                        </keycloakContext.Consumer>
-
+                        <><ApplicationForm ErrorHandle={ErrorHandle} /><RecentlyApplication /></>
                     </div>
                 }
                 {/** search my application */}
