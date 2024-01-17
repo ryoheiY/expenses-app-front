@@ -1,7 +1,12 @@
 /**
  * Tab
- * @param {} param0
- * @returns
+ * @param onClickTab
+ * @param name
+ * @param img
+ * @param displayName
+ * @param propName
+ * @returns {JSX.Element}
+ * @constructor
  */
 function TabUI({onClickTab, name, img, displayName, propName}) {
     return (

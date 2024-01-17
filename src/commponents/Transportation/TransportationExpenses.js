@@ -1,18 +1,18 @@
-import { AiOutlineForm } from "react-icons/ai";
-import { BiBookAlt } from "react-icons/bi";
+import {AiOutlineForm} from "react-icons/ai";
+import {BiBookAlt} from "react-icons/bi";
 import ApplicationForm from "./ApplicationForm";
 import RecentlyApplication from "./RecntlyApplication";
-import { useState } from "react";
+import {useState} from "react";
 import SearchCondition from "./SearchCondtion";
 import TabsUI from "../UI/Tabs";
 import SearchResult from "./SearchResult";
-import { keycloakContext } from "../../App";
+
 /**
  * Tabに表示する項目の一覧
  */
 const TAB_ARRAY = [
-    { name: "application", image: <AiOutlineForm />, displayName: "申請" },
-    { name: "list", image: <BiBookAlt />, displayName: "一覧検索" },
+    {name: "application", image: <AiOutlineForm/>, displayName: "申請"},
+    {name: "list", image: <BiBookAlt/>, displayName: "一覧検索"},
 ];
 
 /**
@@ -34,21 +34,15 @@ function TransportationExpensesList() {
                 {/** application form */}
                 {propName === TAB_ARRAY[0].name &&
                     <div className={`  animate-fadeIn`}>
-                        <keycloakContext.Consumer>
-                            {(value) => {
-                                const { keycloakState } = value;
-                                return (<><ApplicationForm keycloak={keycloakState.keycloak} /><RecentlyApplication /></>)
-                            }}
-                            
-                        </keycloakContext.Consumer>
-
+                        <ApplicationForm/>
+                        <RecentlyApplication/>
                     </div>
                 }
                 {/** search my application */}
                 {propName === TAB_ARRAY[1].name &&
                     <div className={`  animate-fadeIn`}>
-                        <SearchCondition />
-                        <SearchResult />
+                        <SearchCondition/>
+                        <SearchResult/>
                     </div>
                 }
             </div>

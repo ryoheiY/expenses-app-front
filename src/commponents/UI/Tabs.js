@@ -2,8 +2,11 @@ import TabUI from "./Tab";
 
 /**
  * Tabのラッパー
- * @param {*} param0
- * @returns
+ * @param tabs
+ * @param propName
+ * @param setPropName
+ * @returns {JSX.Element}
+ * @constructor
  */
 function TabsUI({tabs, propName, setPropName}) {
     const onClickTab = function (e) {

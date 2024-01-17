@@ -13,10 +13,9 @@ const ROUTES = [
 
 /**
  * ヘッダー
- * @param {*} param0
  * @returns
  */
-function Nav({keycloak}) {
+function Nav() {
     const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
     return (
         <header>

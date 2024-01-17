@@ -1,4 +1,3 @@
-//
 export const APPLICATION_TABLE_COLUMN = [
     "申請日",
     "利用日",

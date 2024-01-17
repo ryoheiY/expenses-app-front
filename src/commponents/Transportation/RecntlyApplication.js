@@ -1,6 +1,6 @@
 import {APPLICATION_TABLE_COLUMN} from "../../constants";
 
-function RecentryApplication() {
+function RecentlyApplication() {
     return (
         <>
             <div className=" text-center font-bold">直近一か月の申請（上限100件）</div>
@@ -55,4 +55,4 @@ function RecentryApplication() {
     );
 }
 
-export default RecentryApplication;
+export default RecentlyApplication;
